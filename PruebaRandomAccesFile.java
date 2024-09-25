@@ -47,34 +47,34 @@ public class PruebaRandomAccesFile {
 	            }
 	        }
 		 
-	     // Abrir el fichero con RandomAccessFile en modo rwd
+	     
 		 try (RandomAccessFile ficheroRandomAcces = new RandomAccessFile(archivo, "rwd");
 	             Scanner scanner = new Scanner(System.in)) {
 
 	            boolean salir = false;
 
 	            while (!salir) {
-	                // Mostrar el contenido actual del ArrayList
+	                
 	                System.out.println("\nContenido del ArrayList:");
 	                for (int i = 0; i < arrayList.size(); i++) {
 	                    System.out.println("Posición " + i + ": " + arrayList.get(i));
 	                }
 
-	                // Pedir la posición a modificar
+	                
 	                System.out.print("\nIngrese la posición a modificar (negativo para salir): ");
 	                int posicion = scanner.nextInt();
 
 	                if (posicion < 0) {
-	                    salir = true; // Salir del bucle si la posición es negativa
+	                    salir = true; 
 	                } else if (posicion >= 0 && posicion < arrayList.size()) {
-	                    // Pedir el nuevo valor
+	                    
 	                    System.out.print("Ingrese el nuevo valor para la posición " + posicion + ": ");
 	                    int nuevoValor = scanner.nextInt();
 
-	                    // Actualizar la estructura en memoria (ArrayList)
+	                    // Actualizar el ArrayList
 	                    arrayList.set(posicion, nuevoValor);
 
-	                    // Actualizar el fichero en la posición correspondiente
+	                    // Actualizar el fichero 
 	                    ficheroRandomAcces.seek(posicion * 4); // Cada entero ocupa 4 bytes
 	                    ficheroRandomAcces.writeInt(nuevoValor);
 
